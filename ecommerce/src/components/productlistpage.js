@@ -35,7 +35,7 @@ const ProductList = () => {
                   // },
                 }}
               > */}
-              <Link to={"/product/" + item.id} state={{ test: "test" }}>
+              <Link to={"/product/" + item.id} state={{ test: item }}>
                 {" "}
                 {item.title}
               </Link>
