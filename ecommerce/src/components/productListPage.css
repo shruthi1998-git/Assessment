@@ -30,6 +30,7 @@ display: grid;
             /* margin: auto; */
             text-align: center;
             font-family: arial;
+            padding-top: 88px;
             /* width: 10px; */
 }
 .card-title{

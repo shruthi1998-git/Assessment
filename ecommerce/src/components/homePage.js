@@ -1,6 +1,7 @@
 import React from "react";
 
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
+import Navbar from "./navbar";
 import "./navbar.css";
 const Homepage = () => {
   //   const [isRedirect, setIsRedirect] = useState(false);
@@ -13,7 +14,7 @@ const Homepage = () => {
     // </button>
     // {isRedirect?}
     <>
-      <nav class="navbar">
+      {/* <nav class="navbar">
         <div class="logo">MUO</div>
 
         <ul class="nav-links">
@@ -30,33 +31,136 @@ const Homepage = () => {
             <Link to="/contactus">Contact</Link>
           </div>
         </ul>
-      </nav>
+      </nav> */}
 
+      {/* <section class="carousel" aria-label="Gallery">
+        <ol class="carousel__viewport">
+          <li id="carousel__slide1" tabindex="0" class="carousel__slide">
+            <div class="carousel__snapper">
+              <a href="#carousel__slide4" class="carousel__prev">
+                Go to last slide
+              </a>
+              <a href="#carousel__slide2" class="carousel__next">
+                Go to next slide
+              </a>
+            </div>
+          </li>
+          <li id="carousel__slide2" tabindex="0" class="carousel__slide">
+            <div class="carousel__snapper"></div>
+            <a href="#carousel__slide1" class="carousel__prev">
+              Go to previous slide
+            </a>
+            <a href="#carousel__slide3" class="carousel__next">
+              Go to next slide
+            </a>
+          </li>
+          <li id="carousel__slide3" tabindex="0" class="carousel__slide">
+            <div class="carousel__snapper"></div>
+            <a href="#carousel__slide2" class="carousel__prev">
+              Go to previous slide
+            </a>
+            <a href="#carousel__slide4" class="carousel__next">
+              Go to next slide
+            </a>
+          </li>
+          <li id="carousel__slide4" tabindex="0" class="carousel__slide">
+            <div class="carousel__snapper"></div>
+            <a href="#carousel__slide3" class="carousel__prev">
+              Go to previous slide
+            </a>
+            <a href="#carousel__slide1" class="carousel__next">
+              Go to first slide
+            </a>
+          </li>
+        </ol>
+        <aside class="carousel__navigation">
+          <ol class="carousel__navigation-list">
+            <li class="carousel__navigation-item">
+              <a href="#carousel__slide1" class="carousel__navigation-button">
+                Go to slide 1
+              </a>
+            </li>
+            <li class="carousel__navigation-item">
+              <a href="#carousel__slide2" class="carousel__navigation-button">
+                Go to slide 2
+              </a>
+            </li>
+            <li class="carousel__navigation-item">
+              <a href="#carousel__slide3" class="carousel__navigation-button">
+                Go to slide 3
+              </a>
+            </li>
+            <li class="carousel__navigation-item">
+              <a href="#carousel__slide4" class="carousel__navigation-button">
+                Go to slide 4
+              </a>
+            </li>
+          </ol>
+        </aside>
+      </section> */}
+      <Navbar />
       <div class="footer">
-        <h5>About Us</h5>
-        <a href="#">Aim</a>
-        <a href="#">Vision</a>
-        <a href="#">Testimonials</a>
-
-        <h5>Services</h5>
-        <a href="#">Writing</a>
-
-        <h5>Social Media</h5>
-
-        <i className="fab fa-facebook-f">
-          <span style={{ marginLeft: "10px" }}>Facebook</span>
+        <h3>stay connected</h3>
+        {/* <a href="https://www.facebook.com/">
+          <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSc7QqBdprW6swrx_DtjZk3b_gdFeQcISmgww4j7JszXA&s"
+            style={{ height: "20px" }}
+          />
+        </a>
+        <a href="#">
+          <img
+            src=" https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Instagram_icon.png/2048px-Instagram_icon.png"
+            style={{ height: "20px" }}
+          />
+        </a>
+        <a href="#">
+          <img
+            src=" https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Instagram_icon.png/2048px-Instagram_icon.png"
+            style={{ height: "20px" }}
+          />
+        </a> */}
+        <i >
+          <span style={{ marginLeft: "10px" }}>
+            <a href="https://www.facebook.com/">
+              <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSc7QqBdprW6swrx_DtjZk3b_gdFeQcISmgww4j7JszXA&s"
+                style={{ height: "20px" }}
+              />
+            </a>
+          </span>
         </i>
 
-        <i className="fab fa-instagram">
-          <span style={{ marginLeft: "10px" }}>Instagram</span>
+        <i >
+          <span style={{ marginLeft: "10px" }}>
+            <a href="#">
+              <img
+                src=" https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Instagram_icon.png/2048px-Instagram_icon.png"
+                style={{ height: "20px" }}
+              />
+            </a>
+          </span>
         </i>
 
-        <i className="fab fa-twitter">
-          <span style={{ marginLeft: "10px" }}>Twitter</span>
+        <i >
+          <span style={{ marginLeft: "10px" }}>
+            <a href="#">
+              <img
+                src=" https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Instagram_icon.png/2048px-Instagram_icon.png"
+                style={{ height: "20px" }}
+              />
+            </a>
+          </span>
         </i>
 
-        <i className="fab fa-youtube">
-          <span style={{ marginLeft: "10px" }}>Youtube</span>
+        <i >
+          <span style={{ marginLeft: "10px" }}>
+            <a href="#">
+              <img
+                src=" https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Instagram_icon.png/2048px-Instagram_icon.png"
+                style={{ height: "20px" }}
+              />
+            </a>
+          </span>
         </i>
       </div>
     </>

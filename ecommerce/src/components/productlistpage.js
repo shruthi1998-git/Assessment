@@ -1,8 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./productListPage.css";
+import "./navbar.css";
 const ProductList = () => {
   const [productdata, setproductdata] = useState([]);
+  const [searchValue, setSearchValue] = useState("");
+  const [filteredData, setfilterData] = useState([]);
+  const [searchData, setSearchData] = useState([]);
+  const [filtercategory, setFilterCategory] = useState("All");
   useEffect(() => {
     fetch("https://fakestoreapi.com/products")
       .then((response) => response.json())
@@ -11,8 +16,45 @@ const ProductList = () => {
         setproductdata(data);
       });
   }, []);
-  const LoadProductsUi = productdata.length
-    ? productdata.map((item) => {
+  const handleSearch = (e) => {
+    setSearchValue(e.target.value);
+    let value = filteredData.length ? filteredData : productdata;
+    let data = value.filter((item) => {
+      return item.title.toLowerCase().includes(searchValue.toLowerCase());
+    });
+    console.log("data", data);
+    if (data.length > 0) {
+      setSearchData(data);
+    } else {
+      setSearchData([]);
+    }
+  };
+  const handleCategoryChange = (e) => {
+    setFilterCategory(e.target.value);
+    let categoryChangedata = searchData.length
+      ? searchData
+      : productdata.filter((item) => {
+          return item.category == e.target.value;
+        });
+    console.log("categoryChangedata", categoryChangedata);
+    if (categoryChangedata.length) {
+      setfilterData(categoryChangedata);
+    } else {
+      setfilterData([]);
+    }
+  };
+  const categorySet = new Set(productdata.map((p) => p.category));
+  const categories = Array.from(categorySet).sort();
+  const filterCategoryUi = categories.map((item) => {
+    return <option value={item}>{item}</option>;
+  });
+  let mapdatasearch = searchData.length
+    ? searchData
+    : productdata || filteredData.length
+    ? filteredData
+    : productdata;
+  const LoadProductsUi = mapdatasearch.length
+    ? mapdatasearch.map((item) => {
         return (
           <>
             <div className="card">
@@ -22,46 +64,90 @@ const ProductList = () => {
                 alt="Denim Jeans"
               />
               <br />
-              {/* <Link
-                to={{
-                  pathname: "/product/" + item.id,
-                  state: {
-                    image: item.image,
-                    category: item.category,
-                  },
-                  // state: {
-                  //   image: item.image,
-                  //   category: item.category,
-                  // },
-                }}
-              > */}
+              <p>
+                {item.rating.rate}{" "}
+                <span
+                  class="fa fa-star checked"
+                  style={{ color: "orange" }}
+                ></span>
+              </p>
               <Link to={"/product/" + item.id} state={{ test: item }}>
                 {" "}
                 {item.title}
               </Link>
-              <p>{item.price}INR</p>
-              {/* <p>Some text about the jeans..</p>
-              <p>
-                <button>Add to Cart</button>
-              </p>  */}
+              <p>Rs.{item.price}</p>
             </div>
-            {/* <div class="card">
-              <img src={item.image} alt="Avatar" style={{ width: "100%" }} />
-              <div class="container">
-                <h4>
-                  <b>John Doe</b>
-                </h4>
-                <p>Architect & Engineer</p>
-              </div>
-            </div> */}
           </>
         );
       })
-    : null;
+    : productdata.map((item) => {
+        return (
+          <>
+            <div className="card">
+              <img
+                src={item.image}
+                style={{ width: "50%", height: "50%" }}
+                alt="Denim Jeans"
+              />
+              <br />
+              <p>
+                {item.rating.rate}{" "}
+                <span
+                  class="fa fa-star checked"
+                  style={{ color: "orange" }}
+                ></span>
+              </p>
+              <Link to={"/product/" + item.id} state={{ test: item }}>
+                {" "}
+                {item.title}
+              </Link>
+              <p>Rs.{item.price}</p>
+            </div>
+          </>
+        );
+      });
   return (
     <>
+      <nav class="navbar">
+        <div class="logo">MUO</div>
+
+        <ul class="nav-links">
+          <input type="checkbox" id="checkbox_toggle" />
+          <label for="checkbox_toggle" class="hamburger">
+            &#9776;
+          </label>
+
+          <div class="menu">
+            <input
+              type="text"
+              placeholder="Search products.."
+              value={searchValue}
+              onChange={handleSearch}
+              label="Search products"
+            />
+            <div className="filter-container">
+              <div>
+                <select
+                  name="category-list"
+                  id="category-list"
+                  onChange={handleCategoryChange}
+                  value={filtercategory}
+                  style={{ height: "33px" }}
+                >
+                  <option value="">All</option>;{filterCategoryUi}
+                </select>
+              </div>
+            </div>
+            <Link to="/">Home</Link>
+            {/* <Link to="/contactus">Contact</Link> */}
+            {/* // <Link to="/Aboutus">About</Link>
+            // <Link to="/Services">Services</Link>
+            // <Link to="/productListPage">Products</Link>
+             <Link to="/contactus">Contact</Link> */}
+          </div>
+        </ul>
+      </nav>
       <div className="container">{LoadProductsUi}</div>
-      product List page
     </>
   );
 };
