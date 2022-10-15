@@ -138,12 +138,8 @@ const ProductList = () => {
                 </select>
               </div>
             </div>
+
             <Link to="/">Home</Link>
-            {/* <Link to="/contactus">Contact</Link> */}
-            {/* // <Link to="/Aboutus">About</Link>
-            // <Link to="/Services">Services</Link>
-            // <Link to="/productListPage">Products</Link>
-             <Link to="/contactus">Contact</Link> */}
           </div>
         </ul>
       </nav>
